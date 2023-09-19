@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Pagination from './Pagination';
+import PaginationIn from './Pagination';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -57,7 +57,7 @@ function App() {
     const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   
     // Cambiar página
-    const paginate = pageNumber => setCurrentPage(pageNumber);
+    const paginate = (event, value)  => setCurrentPage(value);
     
     const formatPrice = (price) => {
       return parseInt(price).toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
@@ -95,7 +95,7 @@ function App() {
       </div>
       <div className="main-content">
       <h1>Productos</h1>
-      <ul>
+      <ul className='products-main'>
         {currentProducts.map((product, index) => (
             <li key={index}>
               <div>
@@ -110,9 +110,10 @@ function App() {
             </li>
         ))}
       </ul>
-      <Pagination 
+      <PaginationIn 
         productsPerPage={productsPerPage} 
         totalProducts={products.length}
+        currentPage={currentPage}
         paginate={paginate}
       />
       </div>
