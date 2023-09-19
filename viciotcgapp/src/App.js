@@ -68,8 +68,8 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-      <div className="sidebar">
+    <div className="flex bg-[#f6f6f6] text-[#232323]">
+      <div className=" text-[.7rem] p-[10px] border border-[#ccc] h-[100vh] overflow-y-auto">
         <h2>Filtros</h2>
         <div className="filter-section">
           <label>Precio desde:</label>
@@ -93,19 +93,19 @@ function App() {
           ))}
         </div>
       </div>
-      <div className="main-content">
-      <h1>Productos</h1>
-      <ul className='products-main'>
+      <div className="flex-[3] p-[10px] ">
+      <h1 className='p-[10px] bg-white rounded-sm	font-[700] uppercase text-center'>Aumenta tu colección TCG cotizando con nosotros</h1>
+      <ul className='p-0 m-0 flex flex-wrap justify-center text-[.7rem]'>
         {currentProducts.map((product, index) => (
-            <li key={index}>
+            <li key={index} className='w-[200px] m-[10px] p-[10px] bg-white rounded-md overflow-hidden text-center shadow-md'>
               <div>
-                <a href={product.product_link} target="_blank" rel="noopener noreferrer">
-                  <img src={product.product_image} alt={product.product_name} width="100" />
+                <a href={product.product_link} target="_blank" rel="noopener noreferrer" className='flex justify-center'>
+                  <img src={product.product_image} alt={product.product_name} width="100" className='max-w-[100%]'/>
                 </a>
-                <h2>{product.product_name}</h2>
+                <h2 className='font-[700]'>{product.product_name}</h2>
                 <p>Tienda: {product.store_name}</p>
-                <p>Precio: {formatPrice(product.product_price)}</p>
-                <p>Disponibilidad: {product.product_available_label || 'Información no disponible'}</p>
+                <span>Precio: <strong>{formatPrice(product.product_price)}</strong></span>
+                {/* <p>Disponibilidad: {product.product_available_label || 'Información no disponible'}</p> */}
               </div>
             </li>
         ))}
