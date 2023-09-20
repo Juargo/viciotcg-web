@@ -10,7 +10,7 @@ const PaginationIn = ({ productsPerPage, totalProducts,currentPage, paginate }) 
   }
 
   return (
-    <nav>
+    <div className='flex justify-center'>
       {/* <ul className='pagination'>
         {pageNumbers.map(number => (
           <li key={number} className='page-item'>
@@ -21,7 +21,7 @@ const PaginationIn = ({ productsPerPage, totalProducts,currentPage, paginate }) 
         ))}
       </ul> */}
       <Pagination count={pageNumbers.length} page={currentPage} onChange={paginate} color="primary"  shape="rounded"/>
-    </nav>
+    </div>
   );
 };
 
