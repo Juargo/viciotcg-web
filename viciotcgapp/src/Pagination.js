@@ -1,7 +1,8 @@
 // Pagination.js
 import React from 'react';
+import Pagination from '@mui/material/Pagination';
 
-const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
+const PaginationIn = ({ productsPerPage, totalProducts,currentPage, paginate }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
@@ -9,8 +10,8 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
   }
 
   return (
-    <nav>
-      <ul className='pagination'>
+    <div className='flex justify-center'>
+      {/* <ul className='pagination'>
         {pageNumbers.map(number => (
           <li key={number} className='page-item'>
             <a onClick={() => paginate(number)} className='page-link'>
@@ -18,9 +19,10 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
             </a>
           </li>
         ))}
-      </ul>
-    </nav>
+      </ul> */}
+      <Pagination count={pageNumbers.length} page={currentPage} onChange={paginate} color="primary"  shape="rounded"/>
+    </div>
   );
 };
 
-export default Pagination;
+export default PaginationIn;
